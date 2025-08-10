@@ -1,14 +1,11 @@
 /**
- * 
- * @returns {Function} Middleware function that logs the request method and URL
+ * @return {function}
  */
 const logger = () => (req, res, next) => {
-    console.log(`${req.method} ${req.url}}`)
-
     res.on('finish', () => {
-        console.log(`Response status: ${res.statusCode}`)
+        console.log(`${req.method} ${res.statusCode}`);
     })
-    next()
+    return next()
 }
 
-export { logger}
+export { logger }
